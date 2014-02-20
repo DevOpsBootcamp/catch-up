@@ -18,3 +18,7 @@ if [ $1 -gt 2 ]; then
     sudo yum update
     sudo yum install git
 fi
+
+if [ $1 -gt 3 ]; then
+    echo "Nothing to do for Lesson 04."
+fi
