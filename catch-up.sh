@@ -32,3 +32,7 @@ if [ $1 -gt 4 ]; then
     pip install flask
     pip install argparse
 fi
+
+if [ $1 -gt 5 ]; then
+    echo "Nothing to do for Lesson 06."
+fi
