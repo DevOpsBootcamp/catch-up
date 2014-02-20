@@ -22,3 +22,13 @@ fi
 if [ $1 -gt 3 ]; then
     echo "Nothing to do for Lesson 04."
 fi
+
+if [ $1 -gt 4 ]; then
+    echo "Updating for Lesson 05."
+    sudo yum install python-virtualenv*
+    virtualenv ~/systemview_venv
+    source ~/systemview_venv/bin/activate
+    git clone git@github.com:DevOpsBootcamp/systemview.git ~
+    pip install flask
+    pip install argparse
+fi
