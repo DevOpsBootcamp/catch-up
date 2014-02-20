@@ -8,3 +8,7 @@ fi
 if [ $1 -gt 0 ]; then
     echo "Nothing to do for Lesson 01."
 fi
+
+if [ $1 -gt 1 ]; then
+    echo "Nothing to do for Lesson 02."
+fi
