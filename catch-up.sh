@@ -12,3 +12,9 @@ fi
 if [ $1 -gt 1 ]; then
     echo "Nothing to do for Lesson 02."
 fi
+
+if [ $1 -gt 2 ]; then
+    echo "Updating for Lesson 03."
+    sudo yum update
+    sudo yum install git
+fi
