@@ -15,8 +15,8 @@ fi
 
 if [ $1 -gt 2 ]; then
     echo "Updating for Lesson 03."
-    sudo yum update
-    sudo yum install git
+    sudo yum -y update
+    sudo yum -y install git
 fi
 
 if [ $1 -gt 3 ]; then
@@ -26,7 +26,7 @@ fi
 if [ $1 -gt 4 ]; then
     echo "Updating for Lesson 05."
     sudo useradd vagrant
-    sudo yum install python-virtualenv*
+    sudo yum -y install python-virtualenv*
     virtualenv ~/systemview_venv
     source ~/systemview_venv/bin/activate
     cd ~
@@ -41,19 +41,20 @@ fi
 
 if [ $1 -gt 6 ]; then
     echo "Updating for Lesson 07."
-    sudo yum install mysql-server
+    sudo yum -y install mysql-server
     sudo /sbin/service mysqld start
     sudo /usr/bin/mysql_secure_installation
     sudo mysqladmin -p create nobel
     sudo mysql < ~/catch-up/usercreate.sql
     wget http://osl.io/nobel -O nobel.sql
     mysql -p nobel < nobel.sql
-    sudo yum install python-devel
-    sudo yum install mysql-devel
+    sudo yum -y install python-devel
+    sudo yum -y install mysql-devel
     cd ~
     source ~/systemview_venv/bin/activate
     cd ~/systemview
     git checkout -tb save-search origin/save-search
     pip install -r requirements.txt
+    python create_tables.py
 fi
 
