@@ -45,7 +45,7 @@ if [ $1 -gt 6 ]; then
     sudo /sbin/service mysqld start
     sudo /usr/bin/mysql_secure_installation
     sudo mysqladmin -p create nobel
-    sudo mysql -p < ~/catch-up/usercreate.sql
+    sudo mysql -p < /vagrant/catch-up/usercreate.sql
     wget http://osl.io/nobel -O nobel.sql
     mysql -p nobel < nobel.sql
     sudo yum -y install python-devel
