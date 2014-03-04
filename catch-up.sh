@@ -2,6 +2,8 @@
 if [ $# != 1 ]; then
     echo "Usage: ./catch-up.sh <Lesson #>" 
     echo "Please provide the lesson you want to upgrade to."
+    echo "Optionally use `./catch-up.sh <Lesson #> m` for a minimal install"
+    echo "to skip downloading Nobel database."
     exit
 fi
 
@@ -46,8 +48,10 @@ if [ $1 -gt 6 ]; then
     sudo /usr/bin/mysql_secure_installation
     sudo mysqladmin -p create nobel
     sudo mysql -p < /vagrant/catch-up/usercreate.sql
-    wget http://osl.io/nobel -O nobel.sql
-    mysql -p nobel < nobel.sql
+    if [[ ! $2 == *m* ]]; then              # Not a minimal catch-up
+        wget http://osl.io/nobel -O nobel.sql
+        mysql -p nobel < nobel.sql
+    fi
     sudo yum -y install python-devel
     sudo yum -y install mysql-devel
     cd ~
@@ -57,4 +61,3 @@ if [ $1 -gt 6 ]; then
     pip install -r requirements.txt
     python create_tables.py
 fi
-
